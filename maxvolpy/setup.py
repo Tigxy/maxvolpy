@@ -1,7 +1,7 @@
 def configuration(parent_package=None, top_path=None):
-    from numpy.distutils.misc_util import Configuration
-    import numpy.__config__ as npconf
     import os
+    import numpy as np
+    from numpy.distutils.misc_util import Configuration
     from os.path import exists, getmtime
     config = Configuration('maxvolpy', parent_package, top_path) 
     
@@ -16,7 +16,7 @@ def configuration(parent_package=None, top_path=None):
 
     config.add_extension('_maxvol',
             sources=['_maxvol.pyx'],
-            extra_info=npconf.lapack_opt_info
+            extra_info=numpy.distutils.system_info.lapack_opt_info
             )
     return config
 
